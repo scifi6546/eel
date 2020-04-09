@@ -4,7 +4,7 @@
   "description": "",
   "private": true,
   "scripts": {
-    "test": "http-server dist/",
+    "start": "http-server dist/",
     "build":"webpack"
   },
   "author": "",
