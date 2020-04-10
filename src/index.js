@@ -1,3 +1,6 @@
+import("rust").then(module => {
+    module.greet();
+  });
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 
@@ -5,11 +8,17 @@ ctx.fillStyle = 'green';
 ctx.fillRect(10, 10, 150, 100);
 
 let state = {
-    "key_down_queue":[]
+    "key_down_queue":[],
+    "_key_queue":[]
 }
 window.addEventListener('keydown', function(event) {
+    console.log("down");
     console.log(event.key);
     state.key_down_queue.push(event.key);
+});
+window.addEventListener('keyup', function(event) {
+    console.log("up");
+    console.log(event.key);
 });
 function draw(x,y,width,height){
     ctx.fillStyle = 'green';
@@ -28,9 +37,9 @@ var y = 0.0;
 const move_speed = 0.6;
 function game_loop(){
     clear();
-    if(state.key_down_queue.length>=1){
-        console.log(state.key_down_queue);
-    }
+    //if(state.key_down_queue.length>=1){
+    //    console.log(state.key_down_queue);
+    //}
     for(let i in state.key_down_queue){
         if(state.key_down_queue[i]=="w"){
             y+=move_speed;
