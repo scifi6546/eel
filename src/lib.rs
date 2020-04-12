@@ -257,6 +257,13 @@ fn new_enemy(position: Vector2) -> Entity {
     e.component_checklist.damage_component = true;
     return e;
 }
+fn new_prize(position: Vector2) -> Entity {
+    let mut e = Entity::new(position, 10, 10, 0xffec00, EntityTeam::Player);
+    e.component_checklist.input_component = false;
+    e.component_checklist.grid_component = true;
+    e.component_checklist.damage_component = false;
+    return e;
+}
 trait Component {
     fn apply(
         &self,
@@ -360,37 +367,24 @@ pub fn init_state() -> State {
     State {
         entities: vec![
             new_player(Vector2::new(1, 1)),
-            new_enemy(Vector2::new(1, 2)),
+            new_enemy(Vector2::new(2, 3)),
+            new_prize(Vector2::new(7,7)),
         ],
         grid: Grid::new(
-            5,
-            5,
+            10,
+            10,
             vec![
-                Tile::Wall,
-                Tile::Wall,
-                Tile::Wall,
-                Tile::Wall,
-                Tile::Wall,
-                Tile::Wall,
-                Tile::Floor,
-                Tile::Floor,
-                Tile::Floor,
-                Tile::Wall,
-                Tile::Wall,
-                Tile::Floor,
-                Tile::Floor,
-                Tile::Floor,
-                Tile::Wall,
-                Tile::Wall,
-                Tile::Floor,
-                Tile::Floor,
-                Tile::Floor,
-                Tile::Wall,
-                Tile::Wall,
-                Tile::Wall,
-                Tile::Wall,
-                Tile::Wall,
-                Tile::Wall,
+                Tile::Wall ,Tile::Wall ,Tile::Wall ,Tile::Wall ,Tile::Wall ,Tile::Wall ,Tile::Wall ,Tile::Wall ,Tile::Wall ,Tile::Wall ,
+                Tile::Wall ,Tile::Floor,Tile::Floor,Tile::Floor,Tile::Floor,Tile::Floor,Tile::Floor,Tile::Floor,Tile::Floor,Tile::Wall ,
+                Tile::Wall ,Tile::Wall ,Tile::Wall ,Tile::Floor,Tile::Wall ,Tile::Floor,Tile::Floor,Tile::Floor,Tile::Floor,Tile::Wall ,
+                Tile::Wall ,Tile::Floor,Tile::Wall ,Tile::Floor,Tile::Wall ,Tile::Wall ,Tile::Wall ,Tile::Wall ,Tile::Floor,Tile::Wall ,
+                Tile::Wall ,Tile::Floor,Tile::Wall ,Tile::Floor,Tile::Wall ,Tile::Floor,Tile::Floor,Tile::Floor,Tile::Floor,Tile::Wall ,
+                Tile::Wall ,Tile::Floor,Tile::Wall ,Tile::Floor,Tile::Wall ,Tile::Floor,Tile::Wall ,Tile::Wall ,Tile::Wall ,Tile::Wall ,
+                Tile::Wall ,Tile::Floor,Tile::Wall ,Tile::Floor,Tile::Wall ,Tile::Floor,Tile::Floor,Tile::Floor,Tile::Floor,Tile::Wall ,
+                Tile::Wall ,Tile::Floor,Tile::Wall ,Tile::Floor,Tile::Wall ,Tile::Floor,Tile::Floor,Tile::Floor,Tile::Floor,Tile::Wall ,
+                Tile::Wall ,Tile::Floor,Tile::Floor,Tile::Floor,Tile::Wall ,Tile::Floor,Tile::Floor,Tile::Floor,Tile::Floor,Tile::Wall ,
+                Tile::Wall ,Tile::Wall ,Tile::Wall ,Tile::Wall ,Tile::Wall ,Tile::Wall ,Tile::Wall ,Tile::Wall ,Tile::Wall ,Tile::Wall ,
+
             ],
         ),
         input: InputComponent {},
